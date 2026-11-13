@@ -1,0 +1,25 @@
+{
+  "package_version": "0.9.2",
+  "authorization": "GATE_MINUS_1_ONLY_NO_CODE",
+  "operating_decision": {
+    "budget": "Rp0",
+    "broad_market": "user_triggered_batch_first",
+    "intraday": "limited_selected_issuers",
+    "post_intake_processing": "automated_local",
+    "bions": "excluded",
+    "tradingview_basic_export": "excluded",
+    "gameplay_A": "illustrative_only"
+  },
+  "checks": {
+    "markdown_links": "PASS",
+    "yaml_json": "PASS",
+    "active_prompt_references": "PASS",
+    "no_tradingview_or_bions_sample_dependency": "PASS",
+    "gameplay_A_illustrative_only": "PASS",
+    "ADR_004_present": "PASS",
+    "batch_first_operating_decision": "PASS"
+  },
+  "errors": [],
+  "warnings": [],
+  "scope_note": "Static document checks only; no external market sample, source permission, parser, schema, calculation, market scan or backtest was validated."
+}
