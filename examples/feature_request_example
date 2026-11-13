@@ -1,0 +1,29 @@
+# Example: Research request from an informal market observation
+
+## Raw request (preserve exact wording)
+"Kadang saham yang turnover-nya naik tapi range kecil malah breakout beberapa hari kemudian. Coba cari apakah ada pola."
+
+## User problem / market question
+Can MBI test whether unusually high turnover combined with muted price range precedes a breakout, and under which issuer/market conditions?
+
+## Request type
+- [x] New event/episode/research question
+- [x] New observation/metric
+- [x] New pattern/detector (candidate only)
+- [ ] Active gameplay/playbook
+
+## Known vs hypothesized
+- Known: user recalls observing this behavior; individual cases not yet supplied.
+- Hypothesis: the combination precedes a defined breakout more often than a baseline.
+- Unknown: tickers, period, turnover definition, timeframe, breakout definition and sample size.
+
+## Required work
+1. Find/import data with valid source/units.
+2. Define issuer-specific baseline and eligible universe.
+3. Define muted range and breakout outcome/horizon before testing.
+4. Collect positive and negative cases.
+5. Avoid overlapping episode duplication and look-ahead.
+6. Test against baseline and unseen period.
+
+## Acceptance
+Return descriptive findings with coverage and counterexamples. No probability until out-of-sample calibration is sufficient.
