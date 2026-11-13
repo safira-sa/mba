@@ -1,0 +1,28 @@
+# ADR-001 — Market Episodes & Response Learning Are the Core
+
+- **Status:** Proposed for user approval before implementation.
+- **Date:** 13 November 2026.
+- **Supersedes:** v0.6 emphasis that treated Custom Gameplay Workshop as a primary standalone centre.
+
+## Context
+
+The product must learn from the whole market, not only the user's executed trades or pre-defined gameplay. External macro/news/policy/issuer information may precede, coincide with or follow market behavior. The system must link information availability, issuer exposure, market state, response and historical analogues. The user also wants to submit informal gameplay and rants that can generate research candidates.
+
+## Decision
+
+Make **Market Episode & Response Learning** the central research unit and workflow. Treat user-originated gameplay, data-discovered patterns and hybrid gameplay as peer hypothesis sources. Rant-to-Research is a universal intake path. Personal Edge evaluates user decisions against market-wide research. Portfolio/accounting remains supporting context.
+
+## Consequences
+
+- Event, observation, episode, pattern, detector, gameplay, playbook, signal, prediction, decision and outcome need separate definitions/entities.
+- Market learning is possible without user trades.
+- Personal learning requires immutable decision-time snapshots and separate trade/no-trade populations.
+- No automatic causal claims or probabilities from anecdotes.
+- Architecture and sprint order prioritize source ingestion, issuer dossier, episodes, response research and discovery before sophisticated gameplay optimization.
+- Existing v0.6 files are superseded; don't merge overlapping specifications.
+
+## Rejected alternatives
+
+1. **Journal-first as sole learning source:** biased toward trades selected/executed by the user and misses market opportunities not noticed.
+2. **Gameplay workshop as core:** limits discovery to strategies the user already thought of.
+3. **LLM-first intelligence:** risks narrative hallucination, cannot replace validated market-data measurements and reproducible research.
