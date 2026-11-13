@@ -1,0 +1,9 @@
+# Gate -1 Sample Intake (empty by design)
+
+Do not put personal BIONS statements, broker credentials, portfolio databases or TradingView exports here.
+
+The only likely user-provided file is one official IDX Ringkasan Saham batch download if Codex/research cannot validate its actual download bytes through an authorized route. Wait for an exact request before downloading anything.
+
+Optional selected-issuer intraday captures must contain no personal identifiers and are not a Gate -1 blocker.
+
+Real source files and synthetic test fixtures must be stored separately and labelled clearly. Raw files should remain local and outside Git in the future operating application; this folder is only for temporary Gate -1 public sample validation.
