@@ -1,0 +1,30 @@
+example_type: fictional_and_unvalidated
+source_type: USER_ORIGINATED
+original_description: "When volume gets unusually high but price barely moves, watch for a possible later breakout."
+playbook_id: PB-SAMPLE-001
+status: RAW_GAMEPLAY
+proposed_interpretation:
+  intent: "Observe possible transition from high activity/muted range to later expansion."
+  rules:
+    - class: OBSERVATION_ONLY
+      concept: "unusually high volume"
+      operationalization: "requires approved relative-volume metric and lookback"
+    - class: OBSERVATION_ONLY
+      concept: "price barely moves"
+      operationalization: "requires approved range/return measure and timeframe"
+    - class: HYPOTHESIS
+      concept: "later breakout"
+      operationalization: "requires precise breakout definition and outcome horizon"
+required_context:
+  - issuer_rolling_personality
+  - daily_or_intraday_resolution
+  - market_regime
+  - cluster_context_if_relevant
+  - flow_data_only_if_available
+required_counterexamples:
+  - "high volume caused by distribution or event exit"
+  - "low-float price suppression or stale/incorrect data"
+  - "activity caused by negotiated/non-regular market segment"
+  - "pattern fails to break out within the defined horizon"
+prohibited_conclusion: "Do not call this accumulation or assign buyer identity based on volume alone."
+next_step: "Define measurable features and collect both positive and negative market episodes before testing."

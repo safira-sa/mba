@@ -1,0 +1,44 @@
+example_type: synthetic_illustration_not_market_fact
+episode_id: EPISODE-SAMPLE-001
+origin: ANOMALY_LED
+status: TRIAGED
+instrument_refs:
+  - security_id: SAMPLE-ISSUER-001
+    ticker_at_event: ABCD
+    identity_status: SYNTHETIC
+context_items:
+  - item_type: MARKET_OBSERVATION
+    epistemic_status: OBSERVATION
+    observed_at: "2026-01-05T10:15:00+07:00"
+    source_ref: sample-chart-capture
+    description: "Turnover appears elevated while intraday price range remains narrow."
+  - item_type: EXTERNAL_EVENT
+    epistemic_status: SOURCE_CLAIM
+    published_at: "2026-01-08T17:00:00+07:00"
+    source_ref: sample-public-disclosure
+    description: "A fictional issuer disclosure is published."
+chronology:
+  event_occurred_at: null
+  first_observed_public_at: "2026-01-08T17:00:00+07:00"
+  retrieved_at: "2026-01-08T17:30:00+07:00"
+  note: "This is the earliest source found in the synthetic fixture, not proof of first possible public availability."
+hypotheses:
+  - hypothesis_id: HYP-SAMPLE-001
+    statement: "Elevated turnover with muted range may precede an expansion in a subset of issuers."
+    status: UNTESTED
+    alternatives:
+      - "Index/sector rebalancing"
+      - "Low-float liquidity effect"
+      - "Data capture or unit error"
+required_research:
+  baseline_window: "configurable prior valid sessions"
+  response_windows: ["event session", "post-event configurable sessions"]
+  required_features:
+    - relative_turnover
+    - daily_range_vs_baseline
+    - benchmark_return
+    - source_coverage
+  missing_data_behavior: INSUFFICIENT_DATA
+  outcome_labels: []
+causal_status: NOT_ESTABLISHED
+notes: "Do not infer accumulation, leakage, manipulation or beneficial-owner identity from this pattern."

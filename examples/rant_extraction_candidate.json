@@ -1,0 +1,36 @@
+{
+  "example_type": "synthetic_extraction_proposal_not_fact",
+  "raw_input": "Gue sering lihat turnover naik tapi harga nggak gerak; beberapa hari kemudian kadang breakout. Kayaknya ada yang nahan.",
+  "proposals": [
+    {
+      "type": "OBSERVATION_CANDIDATE",
+      "source_span": "turnover naik tapi harga nggak gerak",
+      "fields": {
+        "ticker": null,
+        "observed_at": null,
+        "turnover_value": null,
+        "price_range": null,
+        "timeframe": null
+      },
+      "verification_needed": ["ticker", "timestamp", "source data", "units"],
+      "status": "NEEDS_USER_OR_SOURCE_CONFIRMATION"
+    },
+    {
+      "type": "HYPOTHESIS_CANDIDATE",
+      "source_span": "beberapa hari kemudian kadang breakout",
+      "statement": "Elevated turnover with muted price movement may precede a later breakout in some conditions.",
+      "test_requirements": ["define eligible universe", "define turnover baseline", "define muted range", "define breakout", "define horizon", "include failures"],
+      "status": "UNTESTED"
+    },
+    {
+      "type": "INTERPRETATION_CANDIDATE",
+      "source_span": "Kayaknya ada yang nahan",
+      "statement": "Possible price absorption or other liquidity mechanism.",
+      "status": "UNVERIFIED_INTERPRETATION",
+      "prohibited_inference": "No actor, beneficial owner, accumulation, manipulation or information leakage may be inferred."
+    }
+  ],
+  "extraction_confidence": "not provided in this illustrative fixture",
+  "truth_status": "NOT_ESTABLISHED",
+  "user_approval_required": true
+}

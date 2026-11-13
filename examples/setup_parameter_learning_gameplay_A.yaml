@@ -1,0 +1,100 @@
+example_status: ASSISTANT_CREATED_ILLUSTRATION_ONLY_NOT_USER_GAMEPLAY_NOT_GATE_MINUS_1_BLOCKER
+setup_family:
+  id: GAMEPLAY_A_MA_STACK_TWO_GREEN
+  user_label: "Gameplay A"
+  raw_hypothesis: "Price di atas MA10 dan MA20, lalu dua candle hijau. Bandingkan entry yang jaraknya berbeda dari MA."
+  origin: USER
+  intended_horizon: NEEDS_USER_DEFINITION
+setup_definition_version:
+  version: 0.1-draft
+  runnable: false
+  unresolved_semantics:
+    timeframe: "daily or intraday not yet specified"
+    moving_average_method: "SMA/EMA not yet specified"
+    moving_average_input: "not yet specified"
+    candle_completion: "completed-bar rule must be defined"
+    price_basis: "raw/adjusted basis not yet specified"
+    signal_timestamp: "must define when conditions become knowable"
+  candidate_conditions:
+    - feature: close_above_ma
+      periods: [10, 20]
+      operator: ">"
+      rule_class: HARD_GATE_CANDIDATE
+    - feature: consecutive_green_candles
+      count: 2
+      definition_candidate: "completed close > open"
+      rule_class: HARD_GATE_CANDIDATE
+parameter_experiment:
+  status: NOT_RUN
+  baseline: "broad eligible setup definition; exact baseline to be approved"
+  dimensions:
+    - entry_distance_to_ma10_pct: [0.0, 1.0, 2.0, 3.0]
+    - entry_distance_to_ma20_pct: [0.0, 1.0, 2.0, 3.0]
+    - entry_distance_to_ma10_atr: []
+    - entry_distance_to_ma20_atr: []
+  note: "Illustrative grid only. Define justified ranges and experiment plan before research; do not blindly test every combination."
+entry_scenarios:
+  - id: ENTRY_NEXT_OPEN
+    fill_rule: NEEDS_SPECIFICATION
+  - id: ENTRY_MA10_DISTANCE_BAND
+    reference: MA10
+    distance_band_pct: [1.0, 2.0]
+    fill_rule: NEEDS_SPECIFICATION
+  - id: ENTRY_MA20_DISTANCE_BAND
+    reference: MA20
+    distance_band_pct: [1.0, 2.0]
+    fill_rule: NEEDS_SPECIFICATION
+feature_context:
+  technical:
+    - MA10 and MA20 levels and separate distances
+    - candle body/range/wick
+    - ATR and realized volatility
+    - relative volume and actual turnover where available
+    - flow/broker/orderbook only if sourced at the as-of time
+  fundamentals:
+    - point-in-time valuation, growth, margins, profitability, leverage, cash flow and capex where source and period permit
+    - reporting_period and published_at required
+  issuer_and_market:
+    - Daily Session Character and Rolling Stock Personality
+    - market regime, sector and overlapping cluster membership
+    - issuer liquidity, volatility and post-IPO age where relevant
+  ownership_and_network:
+    - controller/UBO/affiliate/project/financing links with source and effective dates
+    - verification state retained; unknown remains unknown
+  user_context:
+    - linked only if the user actually observed or traded this instance
+outcomes:
+  market_wide:
+    - return and market-adjusted return at declared horizons
+    - MFE/MAE and follow-through/reversal
+    - turnover/volume response and time-to-target where supported
+  personal:
+    - actual fills and execution deviations only from the user's journal/import
+    - never derive actual fills from hypothetical scenario outcomes
+validation:
+  required:
+    - all eligible/matched/non-matched/excluded/unavailable counts
+    - positive and negative examples
+    - point-in-time/no-look-ahead checks
+    - event/date/cluster/network dependence review
+    - all tested parameter variants retained
+    - time-based holdout or walk-forward
+    - multiple-testing and robustness-plateau analysis
+    - probability disabled until calibration and effective sample support it
+
+illustrative_cross_issuer_cases:
+  - case: A
+    issuer_character: "established, liquid, lower volatility"
+    signal_distance_pct: {ma10: 0.4, ma20: 1.1}
+    fundamental_context: "positive cash flow; exact period/source required"
+    ownership_context: "disclosed controller link; source/effective date required"
+  - case: B
+    issuer_character: "newly listed, high volatility, limited free float"
+    signal_distance_pct: {ma10: 1.7, ma20: 0.6}
+    fundamental_context: "short post-IPO history; some metrics may be unavailable"
+    ownership_context: "UBO unavailable; do not infer absence"
+  - case: C
+    issuer_character: "cyclical, thinner liquidity, larger daily range"
+    signal_distance_pct: {ma10: 0.9, ma20: 1.8}
+    fundamental_context: "higher leverage; period and consolidated basis required"
+    ownership_context: "reported project relationship; not verified"

@@ -1,0 +1,36 @@
+candidate_id: example-policy-lead-001
+status: RESEARCH_LEAD
+origin_route: TOP_DOWN_CATALYST_LED
+trigger:
+  type: PUBLIC_POLICY_DOCUMENT
+  source_ref: raw-artifact-placeholder
+  published_at: null  # populated only from verified source metadata
+  title: "Illustrative policy announcement"
+  evidence_status: SOURCE_CLAIM
+transmission_path:
+  - step: POLICY_CHANGE
+    evidence_status: SOURCE_CLAIM
+    source_ref: raw-artifact-placeholder
+  - step: INDUSTRY_COST_OR_DEMAND_MECHANISM
+    evidence_status: HYPOTHESIS
+    rationale: "Mechanism requires issuer/industry validation"
+  - step: CANDIDATE_ISSUER
+    issuer_id: null  # never populate from keyword match alone
+    evidence_status: UNKNOWN
+market_validation:
+  status: NOT_YET_CHECKED
+  required_layers: [daily_price, turnover, volume, sector_or_cluster_context]
+historical_analogue:
+  status: NOT_YET_CHECKED
+candidate_brief:
+  supporting_evidence: []
+  contradicting_evidence: []
+  alternative_explanations: []
+  unknowns: [issuer_exposure, materiality, market_response]
+  user_conviction: null  # user-owned; never system-generated
+  system_recommendation: RESEARCH_ONLY
+coverage:
+  universe: null
+  scanned_count: null
+  eligible_count: null
+  exclusions: []

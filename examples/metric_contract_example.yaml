@@ -1,0 +1,32 @@
+metric_id: daily_relative_volume
+version: 1.0.0
+status: illustrative_contract_not_approved_for_production
+definition: "Completed session volume divided by the median of prior eligible completed sessions."
+inputs:
+  current_session_volume:
+    unit: shares
+    source: validated_EOD_volume
+  historical_session_volume:
+    unit: shares
+    lookback_sessions: 20
+    source: same_security_valid_EOD_bars
+formula: "current_session_volume / median(prior_eligible_session_volumes)"
+comparison_rules:
+  include_current_session_in_baseline: false
+  exclude_suspension_or_no_trade_sessions: true
+  require_same_security_identity: true
+output:
+  unit: ratio
+  precision: 4
+missing_data:
+  insufficient_history: INSUFFICIENT_DATA
+  unknown_volume_unit: UNIT_UNKNOWN
+  zero_historical_median: UNDEFINED_BASELINE
+limitations:
+  - "Not comparable if source volume units differ."
+  - "Does not establish buyer identity or accumulation."
+  - "An incomplete current session needs a separate intraday contract."
+tests:
+  - "hand-calculated median with even and odd sample counts"
+  - "unknown unit blocks calculation"
+  - "current session excluded from baseline"
