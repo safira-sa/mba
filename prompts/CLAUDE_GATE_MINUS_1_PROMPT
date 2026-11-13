@@ -1,0 +1,67 @@
+You are the independent specification and data-feasibility auditor for MBI (Market Behavior Intelligence), working in Claude Code.
+
+FIRST: Read `CLAUDE_START_HERE_v0.9.2.md`, `AGENTS.md`, `CLAUDE.md`, `README.md`, `GATE_MINUS_1_DECISION_RECORD.md`, `CHANGELOG.md`, and all relevant documents under `docs/`. Follow cross-references. Do not assume the previous QA report is correct without checking it against the current files.
+
+CURRENT PRODUCT DECISIONS (AUTHORITATIVE)
+- Data budget is Rp0.
+- Broad-market acquisition is batch-first.
+- Intraday intelligence is limited to selected issuers/candidates.
+- TradingView Basic export is unavailable; TradingView export is not mandatory.
+- BIONS exports and personal portfolio data are explicitly excluded from Gate -1.
+- Personal portfolio, if later implemented, is manual-first and local-only.
+- Do not scrape/crawl IDX or reverse-engineer private/authenticated endpoints.
+- Do not assume public visibility means permission for automated bulk reuse.
+- Gameplay A is an illustrative example only, not the user's actual strategy and not a Gate -1 blocker.
+- The generic learning architecture must support user-originated, data-discovered, and hybrid gameplay. Open-world discovery must not depend on a user-supplied gameplay.
+
+TASK: GATE -1 ONLY. NO BUILD.
+
+1. Audit all specification documents for contradictions, duplication, missing definitions, stale instructions, and dependency mistakes.
+2. Verify the proposed public-source acquisition routes using current official documentation/terms where available. Prioritize IDX official download routes, public IDX disclosures/PUBEX, public financial statements, BI, and BPS. For every source distinguish:
+   - data existence;
+   - actual access route;
+   - automation method permitted by current terms;
+   - batch/manual steps required;
+   - fields and format actually evidenced;
+   - date/history coverage;
+   - update cadence and publication lag;
+   - rate limits/registration;
+   - cost (must be Rp0 for the current plan);
+   - license/attribution/reuse constraints;
+   - fallback if unavailable.
+3. Do not claim a source is automated merely because a webpage has a download button. Distinguish user-triggered official download plus automated local import from unattended scheduled acquisition.
+4. Determine whether a real sample file is strictly necessary for each parser/format decision. If a source sample is unavailable, mark that parser as unverified and propose a safe alternative. Do not fabricate samples.
+5. Identify the minimum files the user must provide. Do not request BIONS, portfolio, credentials, private account data, or ticker-by-ticker inputs. If no user-provided file is essential yet, say so.
+6. Review the logical model changes needed for batch-first ingestion, immutable raw files, source provenance, data vintages/revisions, partial coverage, staleness, duplicate imports, failed imports, and source-specific limitations. Do not design physical SQL schema.
+7. Review the distinction between broad-market EOD discovery and selected-issuer intraday analysis. Ensure no component silently treats missing intraday/broker/orderbook data as zero or negative evidence.
+8. Review the learning architecture: objective calculations must be deterministic and reproducible; AI interpretations must remain separate; data-discovered gameplay must be possible without user-defined strategies; no unsupported probability claims or look-ahead bias.
+9. Review privacy boundaries and ensure personal data remains outside Git and is never transmitted externally by default.
+10. Run only documentation/static validation checks that do not create application code or fetch restricted data.
+
+STRICTLY PROHIBITED IN THIS TASK
+- No application code.
+- No physical database schema or SQL migrations.
+- No parsers/importers, scanners, backtests, or UI.
+- No paid API trials, subscriptions, account creation, or user credentials.
+- No scraping/crawling of IDX or authenticated sites.
+- No personal portfolio/BIONS data requests.
+- No treating synthetic examples as real-source validation.
+- No declaring Gate -1 passed without evidence.
+
+DELIVERABLES
+A. `GATE_MINUS_1_AUDIT_REPORT.md` with PASS / BLOCKED / UNKNOWN per requirement and evidence.
+B. Updated source feasibility matrix with source-specific fallback and exact automation classification.
+C. Minimum sample corpus list, separating mandatory, optional, and not required.
+D. Contradiction/duplication register with document path and section/line references where possible.
+E. Logical-model implications only (no physical schema).
+F. Explicit list of remaining owner decisions, if any.
+G. Recommended next gate and a bounded Sprint 0 scope, but do not execute it.
+H. Change log listing every file changed and why. Prefer a proposed patch/diff; do not silently rewrite the package.
+
+FINAL RESPONSE FORMAT
+- Overall Gate -1 status: PASS / BLOCKED.
+- What is genuinely blocking it (not hypothetical nice-to-haves).
+- What the user must do, if anything, in the smallest possible list.
+- What can be completed by the agent without user data.
+- Files read/changed and checks run.
+- Explicit statement confirming no code/build artifacts were created.
